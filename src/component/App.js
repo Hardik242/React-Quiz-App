@@ -88,7 +88,7 @@ function reducer(state, {type, payload}) {
                 index: 0,
                 answer: null,
                 points: 0,
-                secRemains: 10,
+                secRemains: SECS_PER_QUESTION * state.questions.length,
             };
 
         case "clock":
