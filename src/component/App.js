@@ -11,6 +11,8 @@ import FinishScreen from "./FinishScreen.js";
 import Footer from "./Footer.js";
 import Timer from "./Timer.js";
 
+import dataJson from "../data/questions.json";
+
 const SECS_PER_QUESTION = 40;
 
 const initialState = {
@@ -40,14 +42,13 @@ function reducer(state, {type, payload}) {
             };
 
         case "dataFailed":
-            console.log(payload);
+            console.error(payload);
             return {...state, status: "error"};
 
         case "start":
             return {
                 ...state,
                 status: "active",
-                secRemains: SECS_PER_QUESTION * state.questions.length,
             };
 
         case "calSeconds":
@@ -109,11 +110,19 @@ export default function App() {
     ] = useReducer(reducer, initialState);
 
     useEffect(function () {
-        fetch("http://localhost:8000/questions")
-            .then((res) => res.json())
-            .then((data) => dispatch({type: "dataReceived", payload: data}))
-            .then(() => dispatch({type: "calSeconds"}))
-            .catch((error) => dispatch({type: "dataFailed", payload: error}));
+        try {
+            dispatch({type: "dataReceived", payload: dataJson.questions});
+            dispatch({type: "calSeconds"});
+        } catch (error) {
+            dispatch({type: "dataFailed", payload: error});
+        }
+
+        // fetch("http://localhost:8000/questions")
+        // fetch("./questions.json")
+        //     .then((res) => res.json())
+        //      .then((data) => dispatch({type: "dataReceived", payload: data}))
+        //     .then(() => dispatch({type: "calSeconds"}))
+        //     .catch((error) => dispatch({type: "dataFailed", payload: error}));
     }, []);
 
     const numQuestions = questions.length;
