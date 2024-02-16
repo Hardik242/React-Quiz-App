@@ -182,6 +182,7 @@ progress {
   font-size: 2rem;
   font-weight: 500;
   margin-bottom: 1.6rem;
+
 }
 
 .result span {
@@ -260,4 +261,87 @@ progress {
 .counter * {
   font-size: inherit;
   padding: 0.8rem;
+}
+
+@media only screen and (max-width: 768px) {
+  body {
+    padding: 1rem;
+  }
+
+  .app-header {
+    width: 100%;
+    /* background-color: red; */
+    margin-bottom: 2.5rem;
+  }
+
+  .main {
+    width: 98%;
+    /* background-color: green; */
+  }
+
+  img {
+    width: 6rem;
+  }
+
+  h1 {
+    font-size: 2.5rem;
+  }
+
+  h2 {
+    text-align: center;
+    font-size: 2.3rem;
+  }
+
+  h3 {
+    text-align: center;
+    font-size: 1.9rem;
+    margin-bottom: 1.8rem;
+  }
+
+  h4 {
+    font-size: 1.8rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .error {
+    font-size: 1rem;
+    padding: 1.4rem;
+  }
+
+  .progress {
+    margin-bottom: 2.5rem;
+    font-size: 1.4rem;
+  }
+
+  progress {
+
+    height: 10px;
+  }
+
+  .btn {
+    font-size: 1.5rem;
+    padding: 1rem 1.8rem;
+  }
+
+  .answer {
+    transform: translateX(1.2rem);
+  }
+
+  .result {
+    font-size: 1.4rem;
+    padding: 1.2rem 0;
+  }
+
+  .result span {
+    font-size: 1.8rem;
+  }
+
+  .highscore {
+    font-size: 1.6rem;
+  }
+
+  .timer {
+    font-size: 1.4rem;
+    padding: 1rem 1.8rem;
+  }
 }
